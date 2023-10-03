@@ -9,7 +9,7 @@ def cls():  #function for clear console
 def task_1():
   cls()
   check = True
-  while check == True:
+  while check: # Змінна check вже є логічною, тому не потрібно додатково використовувати логічні оператори
     try:
       print("Do you want exit? Enter > 0\n\n")
       print("1 > Дано двозначне число. Знайти суму і твір його цифр.\n")
@@ -47,10 +47,10 @@ def task_2():
   cls()
   check = True
   x = 0
-  while check == True:
+  while check:
     try:
       print("2 > Математичний вираз\n\n")
-      x = int(input("Enter ""x>0 : "))
+      x = float(input("Enter ""x>0 : ")) 
       if x <= 0:
         print("\nx", "is not a need number")
         input("Press Enter to continue...")
@@ -75,7 +75,7 @@ def task_3():
   check = True
   x = 0
   y = 0
-  while check == True:
+  while check:
     try:
       print("3 > Дано координати поля шахівниці x, y (цілі числа, що лежать в діапазоні 1-8). З огляду на, що ліве нижн поле дошки (1, 1)  чорним, перевірити істинність висловлювання: «Дане поле  білим».\n\n")
 
@@ -115,39 +115,40 @@ def task_3():
   cls()  #clear console
 
 
-#Choice var
-cls()
-choice = 0
-check = True
-
-while check == True:
-  try:
-    print("Do you want exit? Enter > 0\n\n")
-    print("1 > Дано двозначне число. Знайти суму і твір його цифр.")
-    print("\n2 > Математичний вираз")
-    print(
-        "\n3 > Дано координати поля шахівниці x, y\n(цілі числа, що лежать в діапазоні 1-8). З огляду на,\nщо ліве нижнє поле дошки (1, 1) є чорним,\nперевірити істинність висловлювання: «Дане поле є білим».\n"
-    )
-
-    choice = int(input("Select a task to test (1-3): "))
-    if choice < 0 or choice >= 4:
+if __name__ == "__main__":
+  #Choice var
+  cls()
+  choice = 0
+  check = True
+  
+  while check:
+    try:
+      print("Do you want exit? Enter > 0\n\n")
+      print("1 > Дано двозначне число. Знайти суму і твір його цифр.")
+      print("\n2 > Математичний вираз")
+      print(
+          "\n3 > Дано координати поля шахівниці x, y\n(цілі числа, що лежать в діапазоні 1-8). З огляду на,\nщо ліве нижнє поле дошки (1, 1) є чорним,\nперевірити істинність висловлювання: «Дане поле є білим».\n"
+      )
+  
+      choice = int(input("Select a task to test (1-3): "))
+      if choice < 0 or choice >= 4:
+        print("There is no task number", choice)
+        input("Press Enter to continue...")
+        cls()  #clear console
+        continue
+      elif choice == 1:
+        task_1()
+      elif choice == 2:
+        task_2()
+      elif choice == 3:
+        task_3()
+      elif choice == 0:
+        check = False  #Exit the loop
+    except ValueError:
       print("There is no task number", choice)
       input("Press Enter to continue...")
       cls()  #clear console
-      continue
-    elif choice == 1:
-      task_1()
-    elif choice == 2:
-      task_2()
-    elif choice == 3:
-      task_3()
-    elif choice == 0:
-      check = False  #Exit the loop
-  except ValueError:
-    print("There is no task number", choice)
-    input("Press Enter to continue...")
-    cls()  #clear console
-
-cls()  #clear console
-
-print("Good luck!")
+  
+  cls()  #clear console
+  
+  print("Good luck!")
